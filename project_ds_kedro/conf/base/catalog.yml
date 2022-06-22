@@ -6,3 +6,7 @@
 election_databse:
   type: pandas.CSVDataSet
   filepath: data/01_raw/ElectionData.csv
+
+pp_election:
+  type: pandas.CSVDataSet
+  filepath: data/02_intermediate/pp_election.csv

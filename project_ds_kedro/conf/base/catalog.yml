@@ -10,3 +10,21 @@ election_databse:
 pp_election:
   type: pandas.CSVDataSet
   filepath: data/02_intermediate/pp_election.csv
+
+encode_territoryname_dataset:
+  type: pandas.CSVDataSet
+  filepath: data/02_intermediate/encoded_territoryname.csv
+
+encode_party_dataset:
+  type: pandas.CSVDataSet
+  filepath: data/02_intermediate/encoded_party.csv
+
+## Auxiliary objects
+label_encoder: 
+  type: pickle.PickleDataSet
+  filepath: data/05_model_input/label_encoder.pickle
+
+label_encoder_party: 
+  type: pickle.PickleDataSet
+  filepath: data/05_model_input/label_encoder_party.pickle
+

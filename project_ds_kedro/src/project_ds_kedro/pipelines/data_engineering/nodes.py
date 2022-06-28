@@ -6,7 +6,7 @@ generated using Kedro 0.18.0
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import LabelEncoder
-
+import scipy.stats as stats
 
 
 def enconde_territory_name(df):
@@ -31,20 +31,11 @@ def enconde_party(df):
 
 
 def func_remove_outliers(df):
-    """ This function detects and removes outliers using the Interquartile range(IQR) method """
+    """ This function detects and removes outliers using the Z-score method """
     
     #Detection outliers and replace the data points that lie outside of the lower and the upper bound with a NULL value.
-    for x in df:
-        q75,q25 = np.percentile(df.loc[:,x],[75,25])
-        intr_qr = q75-q25
- 
-        max = q75+(1.5*intr_qr)
-        min = q25-(1.5*intr_qr)
- 
-        df.loc[df[x] < min,x] = np.nan
-        df.loc[df[x] > max,x] = np.nan
-    
-    #Drop the null values 
-    df = df.dropna(axis = 0)
+    def func_remove_outliers_zscore(df):
+        z = stats.zscore(df)
+        df = df[(z<3).all(axis = 1)]
     
     return df

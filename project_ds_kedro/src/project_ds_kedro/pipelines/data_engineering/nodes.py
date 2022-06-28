@@ -30,12 +30,9 @@ def enconde_party(df):
     return df, label_encoder_party
 
 
-def func_remove_outliers(df):
-    """ This function detects and removes outliers using the Z-score method """
-    
-    #Detection outliers and replace the data points that lie outside of the lower and the upper bound with a NULL value.
-    def func_remove_outliers_zscore(df):
+def func_remove_outliers_zscore(df):
+        """ This function detects and removes outliers using the Z-score method """
+
         z = stats.zscore(df)
         df = df[(z<3).all(axis = 1)]
-    
-    return df
+        return df

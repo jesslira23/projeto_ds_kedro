@@ -23,7 +23,7 @@ encode_party_dataset:
   type: pandas.CSVDataSet
   filepath: data/02_intermediate/encoded_party.csv
 
-election_cleaned_dataset:
+election_without_outliers_dataset:
   type: pandas.CSVDataSet
   filepath: data/05_model_input/election_cleaned_dataset.csv
 

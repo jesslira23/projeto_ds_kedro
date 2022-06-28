@@ -6,7 +6,7 @@ generated using Kedro 0.18.0
 from kedro.pipeline import Pipeline, node, pipeline
 from .nodes import enconde_territory_name
 from .nodes import enconde_party
-from .nodes import func_remove_outliers
+from .nodes import func_remove_outliers_zscore
 
 
 
@@ -31,10 +31,10 @@ def create_pipeline(**kwargs) -> Pipeline:
             name = "enconde_party"
         )
         , node(
-            func = func_remove_outliers,
+            func = func_remove_outliers_zscore,
             inputs = "encode_party_dataset",
-            outputs = "election_cleaned_dataset", 
-            name = "election_cleaned_dataset"
+            outputs = "election_without_outliers_dataset", 
+            name = "election_without_outliers_dataset"
 
         ) 
     ])

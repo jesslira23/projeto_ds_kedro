@@ -6,6 +6,7 @@ generated using Kedro 0.18.0
 from kedro.pipeline import Pipeline, node, pipeline
 from .nodes import enconde_territory_name
 from .nodes import enconde_party
+from .nodes import func_remove_outliers
 
 
 
@@ -19,8 +20,8 @@ def create_pipeline(**kwargs) -> Pipeline:
                 "label_encoder"
             ],
             name = "enconde_territory_name"
-        ),
-        node(
+        )
+        , node(
             func = enconde_party,
             inputs = "encode_territoryname_dataset",
             outputs = [
@@ -29,4 +30,11 @@ def create_pipeline(**kwargs) -> Pipeline:
             ],
             name = "enconde_party"
         )
+        , node(
+            func = func_remove_outliers,
+            inputs = "encode_party_dataset",
+            outputs = "election_cleaned_dataset", 
+            name = "election_cleaned_dataset"
+
+        ) 
     ])

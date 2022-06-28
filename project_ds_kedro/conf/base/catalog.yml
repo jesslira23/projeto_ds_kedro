@@ -7,6 +7,10 @@ election_databse:
   type: pandas.CSVDataSet
   filepath: data/01_raw/ElectionData.csv
 
+pp_election_time_correction:
+  type: pandas.CSVDataSet
+  filepath: data/02_intermediate/pp_election_time_correction.csv
+
 pp_election:
   type: pandas.CSVDataSet
   filepath: data/02_intermediate/pp_election.csv
@@ -19,6 +23,11 @@ encode_party_dataset:
   type: pandas.CSVDataSet
   filepath: data/02_intermediate/encoded_party.csv
 
+election_cleaned_dataset:
+  type: pandas.CSVDataSet
+  filepath: data/05_model_input/election_cleaned_dataset.csv
+
+  
 ## Auxiliary objects
 label_encoder: 
   type: pickle.PickleDataSet
@@ -27,4 +36,6 @@ label_encoder:
 label_encoder_party: 
   type: pickle.PickleDataSet
   filepath: data/05_model_input/label_encoder_party.pickle
+
+
 

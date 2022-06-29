@@ -24,4 +24,4 @@ def register_pipelines() -> Dict[str, Pipeline]:
         "de": data_engineering_pipeline,
         "ds": data_science_pipeline,
         "prepare_and_engineer": (pre_processing_pipeline+data_engineering_pipeline),
-        "__default__": pre_processing_pipeline}
+        "__default__": pre_processing_pipeline+data_engineering_pipeline+data_science_pipeline}

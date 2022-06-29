@@ -3,6 +3,7 @@ This is a boilerplate pipeline 'data_science'
 generated using Kedro 0.18.0
 """
 
+import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import r2_score,mean_absolute_error,mean_squared_error
 
@@ -32,20 +33,18 @@ def func_split_data(df, test_size = 0.3, random_state = 9999):
 
 def func_fit_model(X_train, X_test, y_train, y_test):
     
-    """Fits five regression models using a training dataset"""
+    """Fits a classifier model using a training dataset"""
     
-    model=[LinearRegression(),SVR(),RandomForestRegressor(),GradientBoostingRegressor(),DecisionTreeRegressor()]
-
-    for model in model:
-        model.fit(X_train, y_train)
-        score = model.score(X_train, y_train)
-        pred=model.predict(X_test)
-        print('Score of',model,'is:',score)
-        print('MAE:',mean_absolute_error(y_test,pred))
-        print('MSE:',mean_squared_error(y_test,pred))
-        #print('RMSE:',np.sqrt(mean_squared_error(y_test,pred)))
-        print('R2 score:',r2_score(y_test,pred))
-        print('*'*100)
-        print('\n') 
-        
-    return model
+    regression = GradientBoostingRegressor()
+    regression.fit(X_train, y_train)
+    
+    #Predicts test set 
+    y_pred = regression.predict(X_test)
+    
+    #Reports Score
+    print('MAE:',mean_absolute_error(y_test,y_pred))
+    print('MSE:',mean_squared_error(y_test,y_pred))
+    print('RMSE:',np.sqrt(mean_squared_error(y_test,y_pred)))
+    print('R2 score:',r2_score(y_test,y_pred))
+    
+    return regression

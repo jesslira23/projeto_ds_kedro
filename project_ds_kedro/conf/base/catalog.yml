@@ -23,11 +23,18 @@ encode_party_dataset:
   type: pandas.CSVDataSet
   filepath: data/02_intermediate/encoded_party.csv
 
+election_normalized_dataset:
+  type: pandas.CSVDataSet
+  filepath: data/02_model_input/election_cleaned_dataset.csv
+
 election_without_outliers_dataset:
   type: pandas.CSVDataSet
   filepath: data/05_model_input/election_cleaned_dataset.csv
 
-  
+model_results:
+  type: pickle.PickleDataSet
+  filepath: data/07_model_output/model_results.pickle
+
 ## Auxiliary objects
 label_encoder: 
   type: pickle.PickleDataSet

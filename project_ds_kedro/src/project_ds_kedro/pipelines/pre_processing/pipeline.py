@@ -14,14 +14,12 @@ def create_pipeline(**kwargs) -> Pipeline:
             inputs = 'election_databse',
             outputs = 'pp_election_time_correction',
             name  = 'pp_election_time_correction'
-        ),
-        node(
+        )
+        , node(
             func = func_drop_columns,
             inputs = 'pp_election_time_correction',
             outputs = 'pp_election',
             name  = 'preprocess_election'
-
         )
-
 
     ])

@@ -8,7 +8,7 @@ Segue o link para obtenção do [dataset](https://archive.ics.uci.edu/ml/dataset
 Dentro do projeto_ds_kedro há uma pasta escrita "project_ds_kedro", onde está todo o projeto da previsão eleitoral usando Kedro. Para isso, vá para a pasta:
 
 ```
-cd poject_ds_kedro
+cd project_ds_kedro
 ```
 
 ## How to install dependencies

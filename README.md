@@ -20,9 +20,9 @@ pip install -r src/requirements.txt
 
 ## How to add raw_dataset?
 Você deve seguir os seguintes passos para adicionar o conjunto de dados no projeto Kedro:
-1) Ir no local onde está o [dataset](https://archive.ics.uci.edu/ml/datasets/Real-time+Election+Results%3A+Portugal+2019);
-2) Baixar o arquivo "ElectionData.csv";
-3) Salvar o arquivo na pasta data>01_raw.
+1) Ir no local onde está o [dataset](https://archive.ics.uci.edu/ml/datasets/Real-time+Election+Results%3A+Portugal+2019) e baixar o arquivo "ElectionData.csv";
+2) ou baixar o arquivo "ElectionData.csv" que está na pasta do projeto;
+3) Salvar o arquivo na pasta project_ds_kedro>data>01_raw.
 
 ## How to run your Kedro pipeline
 

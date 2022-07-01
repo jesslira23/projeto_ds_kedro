@@ -10,17 +10,6 @@ from sklearn.preprocessing import MinMaxScaler
 import scipy.stats as stats
 
 
-def enconde_territory_name(df):
-    
-    """This function converts the territoryName column to numeric categories"""
-
-    label_encoder = LabelEncoder()
-    label_encoder = label_encoder.fit(df['territoryName'])
-    df['territoryName'] = label_encoder.transform(df['territoryName'])
-
-    return df, label_encoder
-
-
 def enconde_party(df):
     
     """This function converts the Party column to numeric categories"""
@@ -32,21 +21,20 @@ def enconde_party(df):
     return df, label_encoder_party
 
 
-def func_normalized_dataset(df):
-    """This function is intended to normalize the data"""
+def func_remove_outliers_IQR_approach(df):
+    
+    """ This function detects and removes outliers using the IQR_approach """
+    
+    for x in df:
+        q75,q25 = np.percentile(df.loc[:,x],[75,25])
+        intr_qr = q75-q25
 
-    cols_normalizado = ['territoryName','totalMandates', 'numParishes', 'numParishesApproved', 'blankVotes', 'nullVotes', 'subscribedVoters', 'totalVoters', 'pre.blankVotes', 'pre.nullVotes', 'pre.subscribedVoters', 'pre.totalVoters', 'Party', 'Mandates', 'Votes','Hondt', 'FinalMandates']
-    norm = MinMaxScaler()
+        max = q75+(1.5*intr_qr)
+        min = q25-(1.5*intr_qr)
 
-    df[cols_normalizado] = norm.fit_transform(df[cols_normalizado])
+        df.loc[df[x] < min,x] = np.nan
+        df.loc[df[x] > max,x] = np.nan
+
+    df = df.dropna(axis = 0)
     
     return df
-
-
-def func_remove_outliers_zscore(df):
-        """ This function detects and removes outliers using the Z-score method """
-
-        z = stats.zscore(df)
-        df = df[(z<3).all(axis = 1)]
-        
-        return df

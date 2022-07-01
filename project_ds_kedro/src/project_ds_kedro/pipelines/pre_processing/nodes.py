@@ -5,6 +5,12 @@ generated using Kedro 0.18.0
 
 import pandas as pd
 
+def df_lisboa(df):
+    
+    """ This function serves to limit the dataset only to the Territory = Lisboa """
+    
+    df = df.loc[df['territoryName'] == 'Lisboa']
+    return df
 
 def preprocess_time(df):
     """ This function convert time column from object to datetime format."""
@@ -18,6 +24,6 @@ def func_drop_columns(df):
     """ This function clears the dataframe. Study performed from the heatmap, considering correlation > 0.9 """    
    
     #Remove columns with correlation less than 0.9
-    df = df.drop(columns=['TimeElapsed', 'availableMandates', 'blankVotesPercentage', 'nullVotesPercentage', 'votersPercentage', 'pre.blankVotesPercentage', 'pre.nullVotesPercentage', 'pre.votersPercentage', 'Percentage', 'validVotesPercentage'])
+    df = df.drop(columns=['territoryName', 'numParishes'])
     
     return df

@@ -3,15 +3,11 @@ This is a boilerplate pipeline 'data_science'
 generated using Kedro 0.18.0
 """
 
+import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import r2_score,mean_absolute_error,mean_squared_error
-
-from sklearn.linear_model import LinearRegression
-from sklearn.svm import SVR
-from sklearn.ensemble import RandomForestRegressor
 from sklearn.ensemble import GradientBoostingRegressor
-from sklearn.tree import DecisionTreeRegressor
 
 
 
@@ -46,5 +42,7 @@ def func_fit_model(X_train, X_test, y_train, y_test):
     print('MSE:',mean_squared_error(y_test,y_pred))
     print('RMSE:',np.sqrt(mean_squared_error(y_test,y_pred)))
     print('R2 score:',r2_score(y_test,y_pred))
-    
+        
     return regression
+
+

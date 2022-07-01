@@ -7,6 +7,10 @@ election_databse:
   type: pandas.CSVDataSet
   filepath: data/01_raw/ElectionData.csv
 
+lisboa_dataset:
+  type: pandas.CSVDataSet
+  filepath: data/02_intermediate/pp_election_time_correction.csv
+
 pp_election_time_correction:
   type: pandas.CSVDataSet
   filepath: data/02_intermediate/pp_election_time_correction.csv
@@ -14,10 +18,6 @@ pp_election_time_correction:
 pp_election:
   type: pandas.CSVDataSet
   filepath: data/02_intermediate/pp_election.csv
-
-encode_territoryname_dataset:
-  type: pandas.CSVDataSet
-  filepath: data/02_intermediate/encoded_territoryname.csv
 
 encode_party_dataset:
   type: pandas.CSVDataSet
@@ -31,16 +31,19 @@ election_without_outliers_dataset:
   type: pandas.CSVDataSet
   filepath: data/05_model_input/election_cleaned_dataset.csv
 
-model_results:
+regression_model:
   type: pickle.PickleDataSet
-  filepath: data/07_model_output/model_results.pickle
+  filepath: data/06_models/model_results.pickle
 
+X_test:
+  type: pandas.CSVDataSet
+  filepath: data/07_model_output/X_test.csv
+
+y_test:
+  type: pandas.CSVDataSet
+  filepath: data/07_model_output/y_test.csv
 
 ## Auxiliary objects
-label_encoder: 
-  type: pickle.PickleDataSet
-  filepath: data/05_model_input/label_encoder.pickle
-
 label_encoder_party: 
   type: pickle.PickleDataSet
   filepath: data/05_model_input/label_encoder_party.pickle
